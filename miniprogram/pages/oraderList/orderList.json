@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "订单",
+  "usingComponents": {
+    "van-card": "/@vant/weapp/card/index"
+  }
+}

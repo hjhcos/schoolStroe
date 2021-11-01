@@ -1,0 +1,1 @@
+"D:\wecharTool\cli.bat" cloud functions deploy --e hjhcos-7g95a26f9b53c40d --n quickstartFunctions --r --project "G:\Ð¡³ÌÐò\wechar\hjh"

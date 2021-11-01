@@ -1,0 +1,14 @@
+<view class="container">
+  <block wx:for="{{orderList}}" wx:key="index">
+    <van-card tag="{{item.addr}}" thumb="{{item.previewImage}}" bind:tap="goPages" data-url="">
+      <view slot="title">订单号：{{item._id}}</view>
+      <view slot="desc">下单时间：{{item.orderDate}}</view>
+      <van-tag slot="tags" type="danger" size="large" wx:if="{{!item.receiver=='undefined'}}">{{item.receiver}}</van-tag>
+      <view slot="price" style="font-size: 14px">￥{{item.total}}</view>
+      <view slot="bottom">共{{item.num ? item.num : 0}}件</view>
+      <view slot="footer">
+        <van-button size="small" block type="primary" data-index="{{index}}" bind:tap="receiverOrder">{{}}</van-button>
+      </view>
+    </van-card>
+  </block>
+</view>

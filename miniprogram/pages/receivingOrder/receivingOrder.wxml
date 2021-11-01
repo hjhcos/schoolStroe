@@ -1,0 +1,29 @@
+<!-- TODO: 获取订单数据 -->
+<view class="container"> 
+  <van-tabs active="{{ active }}" bind:change="onChangeTabActive"> 
+    <van-tab title="未接单" data-name="0"> 
+      <block wx:for="{{pendOrderList}}" wx:key="index"> 
+        <van-card tag="{{item.addr}}" thumb="{{item.previewImage}}" bind:tap="goPages" data-url=""> 
+          <view slot="title">订单号：{{item._id}}</view>
+          <view slot="desc">下单时间：{{item.orderDate}}</view>
+          <van-tag slot="tags" type="danger" size="large">{{item.addr}}</van-tag>
+          <view slot="price" style="font-size: 14px">￥{{item.num ? item.num : 0}}</view>
+          <view slot="bottom">共{{item.num ? item.num : 0}}件</view>
+          <view slot="footer"><van-button size="small" block type="primary" data-index="{{index}}" bind:tap="receiverOrder">接单</van-button></view>
+        </van-card>
+      </block>
+    </van-tab>
+    <van-tab title="已接单" data-name="1">
+      <block wx:for="{{receiveOrderList}}" wx:key="index"> 
+        <van-card tag="{{item.addr}}" thumb="{{item.previewImage}}" bind:tap="goPages" data-url="">
+          <view slot="title">订单号：{{item._id}}</view>
+          <view slot="desc">接单时间：{{item.receiveTime}}</view>
+          <van-tag slot="tags" type="danger" size="large">{{item.addr}}</van-tag>
+          <view slot="price" style="font-size: 14px">￥{{item.num ? item.num : 0}}</view>
+          <view slot="bottom">共{{item.num ? item.num : 0}}件</view>
+          <view slot="footer"><van-button plain size="small" block type="primary">已接单</van-button></view>
+        </van-card>
+      </block>
+    </van-tab>
+  </van-tabs>
+</view>

@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #e5e9f2;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.articlePreview{
+  width: 320rpx;
+  height: 320rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+
+
+.wrapper {
+  position: relative;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+
+
+.active{
+  --picker-option-selected-text-color: #f56c6c
+}

@@ -1,0 +1,163 @@
+<view class="container">
+
+  <!-- 商品 -->
+  <block wx:if="{{active == 'article'}}">
+    <view class="article" style="margin-bottom: 101px;">
+      <van-empty description="你还没有添加商品" wx:if="{{!articleList.length}}" />
+      <block wx:for="{{articleList}}" wx:key="index">
+        <van-card desc="{{item.des}}" num="{{item.num}}" price="{{item.price}}" title="{{item.name}}"
+          thumb="{{ item.picture }}" lazy-load tag="商品">
+          <view slot="tags">
+            <van-tag type="danger">{{item.type}}</van-tag>
+          </view>
+          <view slot="footer">
+            <van-button size="mini" bindtap="orderNum" data-index="{{index}}" data-name="add">添加</van-button>
+            <van-button size="mini" bindtap="orderNum" data-index="{{index}}" data-name="del">删除</van-button>
+          </view>
+        </van-card>
+      </block>
+    </view>
+  </block>
+
+  <!-- 分类 -->
+  <block wx:elif="{{active == 'classify'}}">
+  </block>
+
+  <!-- 购物车 -->
+  <block wx:elif="{{active == 'cart'}}">
+    <view class="cart" style="margin-bottom: 101px;">
+      <van-empty description="你还没有添加商品" wx:if="{{!shoppingBtn.total}}" />
+      <block wx:for="{{shoppingCar}}" wx:key="index">
+        <van-card desc="{{item.des}}" num="{{item.num}}" price="{{item.price}}" title="{{item.name}}"
+          thumb="{{ item.picture }}" lazy-load tag="商品" wx:if="{{item.num && shoppingBtn.total}}">
+          <view slot="tags">
+            <van-tag type="danger">{{item.type}}</van-tag>
+          </view>
+          <view slot="footer">
+            <van-button size="mini" bindtap="orderNum" data-index="{{index}}" data-name="add">添加</van-button>
+            <van-button size="mini" bindtap="orderNum" data-index="{{index}}" data-name="del">删除</van-button>
+          </view>
+        </van-card>
+      </block>
+    </view>
+  </block>
+
+  <!-- 购物车 商品 打开支付订单栏 -->
+  <view class="shopping" wx:if="{{ active == 'cart' || active == 'article' }}">
+    <view class="tip" wx:if="{{!isLogin}}">你还没有登录<text class="text" bind:tap="getLogin">立即登录</text></view>
+    <!-- TODO: 支付事件 -->
+    <van-submit-bar price="{{ shoppingBtn.total }}" button-text="付款" bind:submit="payOrder"
+      disabled="{{shoppingBtn.disabled}}" loading="{{shoppingBtn.loading}}" wx:if="{{isLogin && shoppingBtn.total}}">
+    </van-submit-bar>
+  </view>
+
+  <!-- 我的 -->
+  <block wx:elif="{{active == 'self'}}">
+    <view class="user">
+      <view class="header acea-row row-between-wrapper bg-color">
+        <view class="picTxt acea-row row-between-wrapper" bindtap='getLogin'>
+          <van-image width="120rpx" height="120rpx" src="{{userInfo.avatarUrl}}" fit="cover" round lazy-load />
+          <view class="text">
+            <view class='acea-row row-middle'>
+              <view class='name line1'>{{userInfo.nickName ? userInfo.nickName : '请点击授权'}}</view>
+              <van-tag plain type="danger" wx:if="{{userInfo.vip}}">VIP</van-tag>
+            </view>
+            <view style="display: inline-block">
+              <view class="binding phone">{{userInfo.phone ? userInfo.phone : '绑定手机号'}}</view>
+            </view>
+            <view style="display: inline-block">
+              <view class="binding addr">{{userInfo.addr ? userInfo.addr : '绑定地址'}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="wrapper">
+        <view class='nav acea-row row-middle'>
+          <view class='item'>
+            <view>我的余额</view>
+            <view class='num'>{{userInfo.money || 0}}</view>
+          </view>
+          <!-- <view class='item' wx:if="{{userInfo.type == 2}}">
+            <view>保证金</view>
+            <view class='num'>{{userInfo.bail || 0}}</view>
+          </view> -->
+          <view class='item'>
+            <view>当前积分</view>
+            <view class='num'>{{userInfo.integral || 0}}</view>
+          </view>
+          <view class='item' bindtap='goPages' data-url="">
+            <view>优惠券</view>
+            <view class='num'>{{userInfo.couponCount || 0}}</view>
+          </view>
+        </view>
+        <view class='myOrder'>
+          <!-- TODO: 全部订单 -->
+          <view class='title acea-row row-between-wrapper'>
+            <view>我的订单</view>
+            <view class='allOrder' data-url='/pages/oraderList/orderList' bindtap='goPages'>全部订单
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <!-- TODO: 待付款 待发货 待收货 -->
+          <view class='orderState acea-row row-middle'>
+            <view class='item' bindtap='onChangeTabbarActive' data-url="cart">
+              <van-icon name="cash-back-record" size="50rpx" dot="{{shoppingBtn.total}}" color="#f56c6c" />
+              <view>待付款</view>
+            </view>
+            <view class='item' data-url='/pages/orderList/orderList?statu=0' bindtap='goPages'>
+              <van-icon name="logistics" size="50rpx" color="#f56c6c" />
+              <view>待发货</view>
+            </view>
+            <view class='item' data-url='/pages/orderList/orderList?statu=1' bindtap='goPages'>
+              <van-icon name="balance-list-o" size="50rpx" color="#f56c6c" />
+              <view>待收货</view>
+            </view>
+          </view>
+        </view>
+        <view class='myService'>
+          <view class='title acea-row row-middle'>我的服务</view>
+          <!-- 客服 填写商品 接单 -->
+          <view class='serviceList acea-row row-middle'>
+            <button class='item btn-none' open-type="contact">
+              <van-icon name="service-o" size="50rpx" color="#f56c6c" />
+              <view>客服</view>
+            </button>
+            <view class='item' bindtap='goPages' wx:if="{{userInfo.worker == 2 || userInfo.worker == 0}}"
+              data-url="/pages/recordArticle/recordArticle">
+              <van-icon name="records" size="50rpx" color="#f56c6c" />
+              <view>填写商品</view>
+            </view>
+            <view class='item' bindtap='goPages' wx:if="{{userInfo.worker == 3 || userInfo.worker == 0}}"
+              data-url="/pages/receivingOrder/receivingOrder">
+              <van-icon name="bill-o" size="50rpx" color="#f56c6c" />
+              <view>接单</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 授权模态框 -->
+  <view class="modal-mask" wx:if="{{update}}"></view>
+  <view class="modal-main circle" wx:if="{{update}}"
+    style="height: calc(186px - 44px); padding: 36rpx 24rpx 0; background-color: #eee;">
+    <van-input label="宿舍门牌号" value="{{ sendVerifyInfo.addr }}" placeholder="例如：9612" border="{{ true }}"
+      bind:change="onChange" data-name="addr" />
+    <van-input label="手机号码" value="{{ sendVerifyInfo.phone }}" placeholder="例如：15357339380" border="{{ true }}"
+      bind:change="onChange" data-name="phone" />
+    <!-- <van-input value="{{ verify }}" center clearable label="短信验证码" placeholder="请输入验证码" border="{{ false }}"
+      use-button-slot>
+      <van-button slot="button" size="small" type="{{sendVerifyInfo.buttonType}}">{{sendVerifyInfo.buttonText}}</van-button> 
+    </van-input> -->
+    <van-button type="primary" block bind:tap="register">注册</van-button>
+  </view>
+
+  <!-- tabbar -->
+  <van-tabbar active="{{ active }}" bind:change="onChangeTabbarActive" active-color="#f56c6c" z-index="{{8998}}">
+    <van-tabbar-item icon="shop-o" name="article">商品</van-tabbar-item>
+    <van-tabbar-item icon="apps-o" name="classify">分类</van-tabbar-item>
+    <van-tabbar-item icon="shopping-cart-o" name="cart">购物车</van-tabbar-item>
+    <van-tabbar-item icon="user-o" name="self">我的</van-tabbar-item>
+  </van-tabbar>
+</view>

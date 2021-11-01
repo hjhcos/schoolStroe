@@ -1,0 +1,222 @@
+.btn-none{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  line-height: 1.2;
+}
+.btn-none::after{
+  border: none;
+  border-radius: 0;
+}
+
+
+/* ****************************************个人中心样式 strat ************************************** */
+.user .header {
+  padding: 0 30rpx;
+  height: 190rpx;
+  position: relative;
+}
+
+.user .header .picTxt .text {
+  width: 420rpx;
+  color: rgba(255, 255, 255, 1);
+  margin-left: 35rpx;
+}
+
+.user .header .picTxt .text .name {
+  font-size: 32rpx;
+  max-width: 270rpx;
+}
+
+.line1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user .binding {
+  padding: 2rpx 18rpx;
+  background-color: #ca1f10;
+  border-radius: 50px;
+  font-size: 22rpx;
+  border: 1px solid #e8695e;
+  color: #ffffff;
+}
+
+.binding.phone {
+  max-width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.binding.addr {
+  max-width: 120rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user .wrapper {
+  padding: 0 20rpx;
+}
+
+.user .wrapper .nav {
+  background-color: #fff;
+  border-radius: 6rpx;
+  height: 140rpx;
+}
+
+.user .wrapper .nav .item {
+  flex: 1;
+  text-align: center;
+  font-size: 26rpx;
+  color: #aaa;
+  border-right: 1rpx solid #ddd;
+}
+
+.user .wrapper .nav .item:nth-last-child(1) {
+  border-right: none;
+}
+
+.user .wrapper .nav .item .num {
+  margin-top: 10rpx;
+  font-size: 36rpx;
+  color: #282828;
+}
+
+.user .wrapper .myOrder {
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-top: 15rpx;
+}
+
+.user .wrapper .myOrder .title,
+.user .wrapper .myService .title {
+  height: 88rpx;
+  padding: 0 30rpx;
+  border-bottom: 1rpx dashed #ddd;
+  font-size: 30rpx;
+  color: #282828;
+}
+
+.user .wrapper .myOrder .title .allOrder {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.user .wrapper .myOrder .orderState {
+  height: 160rpx;
+}
+
+.user .wrapper .myOrder .orderState .item {
+  font-size: 26rpx;
+  color: #454545;
+  flex: 1;
+  text-align: center;
+}
+
+.user .wrapper .myService {
+  background-color: #fff;
+  margin-top: 15rpx;
+  border-radius: 10rpx;
+}
+
+.user .wrapper .myOrder .title,
+.user .wrapper .myService .title {
+  height: 88rpx;
+  padding: 0 30rpx;
+  border-bottom: 1rpx dashed #ddd;
+  font-size: 30rpx;
+  color: #282828;
+}
+
+.user .wrapper .myService .serviceList {
+  height: 160rpx;
+}
+
+.user .wrapper .myService .serviceList .item {
+  font-size: 26rpx;
+  color: #454545;
+  flex: 1;
+  text-align: center;
+}
+
+/* ****************************************个人中心样式 end ************************************** */
+
+/* ****************************************商城样式 start ************************************** */
+.article .van-card {
+  border-bottom: 1rpx dashed #ddd;
+}
+
+.shopping .van-submit-bar {
+  bottom: 50px;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.tip {
+  position: fixed;
+  width: 100%;
+  bottom: 50px;
+  background-color:#fff7cc;
+  color: #f56723;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 10px;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.tip .text {
+  color: #1989fa;
+}
+.tip .text:hover {
+  color: #ddd;
+}
+/* ****************************************商城样式 end ************************************** */
+
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 8999;
+  color: #fff;
+}
+
+.modal-main {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  background-color: #fff;
+  width: 80%;
+  height: 100rpx;
+  z-index: 9000;
+}
+
+.acea-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.acea-row.row-middle {
+  align-items: center;
+}
+
+.acea-row.row-between-wrapper {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bg-color {
+  background-color: #f56c6c !important;
+}

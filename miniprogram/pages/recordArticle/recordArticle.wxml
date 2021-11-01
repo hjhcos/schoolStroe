@@ -1,0 +1,27 @@
+<view class="container">
+  <view style="width: 100%; height: 320rpx; position: relative; margin-top: 60rpx">
+    <view class="articlePreview" style="position: absolute;">
+      <van-uploader max-count="1" bind:after-read="onChange" data-name="image">
+        <van-image src="{{article.picture}}" height="320rpx" width="320rpx" use-loading-slot fit="cover">
+          <text slot="loading">点击上传商品图片</text>
+        </van-image>
+      </van-uploader>
+    </view>
+  </view>
+
+  <view class="wrapper" style="padding-top: 20rpx; width: 100%;">
+    <van-input value="{{ article.name }}" label="商品名称" placeholder="请输入商品名称" bind:change="onChange" data-name="name"
+      size="large" />
+    <van-input value="{{ article.price }}" label="商品价格￥" placeholder="请输入价格" bind:change="onChange" data-name="price"
+      type="digit" size="large" />
+    <van-input value="{{ article.type }}" label="商品类型" placeholder="请选择商品类型" data-name="type" bind:tap="onChange"
+      readonly size="large" />
+    <van-input value="{{ article.des }}" label="商品描述" placeholder="例如：250ml可乐" data-name="des" bind:change="onChange"
+      size="large" />
+    <van-button block type="primary" bind:tap="uploading">上传商品数据</van-button>
+  </view>
+  <van-overlay bind:click="onClickHide" show="{{openTypeSelect}}" z-index="8999"></van-overlay>
+  <van-picker wx:if="{{openTypeSelect}}" columns="{{ articleTypeList }}" bind:cancel="onChange" bind:confirm="onChange"
+    show-toolbar title="商品类型" visible-item-count="{{3}}" default-index="{{1}}" active-class="active"
+    style="position: fixed;bottom: 0;left: 0;width:100%; z-index: 9000" data-name="type" />
+</view>

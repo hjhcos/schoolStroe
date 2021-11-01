@@ -1,0 +1,12 @@
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #e5e9f2;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.van-card{
+  border-bottom: 1rpx dashed #ddd;
+}
+
+

@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/oraderList/oraderList",
+    "pages/receivingOrder/receivingOrder",
+    "pages/recordArticle/recordArticle"
+  ],
+  "window": {
+    "backgroundColor": "#f56c6c",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f56c6c",
+    "navigationBarTitleText": "校内商城",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "van-grid": "/@vant/weapp/grid/index",
+    "van-grid-item": "/@vant/weapp/grid-item/index",
+    "van-tabbar": "/@vant/weapp/tabbar/index",
+    "van-tabbar-item": "/@vant/weapp/tabbar-item/index",
+    "van-notice-bar": "/@vant/weapp/notice-bar/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}
