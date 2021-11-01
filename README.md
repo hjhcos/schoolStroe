@@ -1,12 +1,22 @@
-# 云开发 quickstart
+## schoolStore
 
-这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：
+> 基于vant-weapp云开发的校园商城系统模板
 
-- 数据库：一个既可在小程序前端操作，也能在云函数中读写的 JSON 文档型数据库
-- 文件存储：在小程序前端直接上传/下载云端文件，在云开发控制台可视化管理
-- 云函数：在云端运行的代码，微信私有协议天然鉴权，开发者只需编写业务逻辑代码
+### 模板样式
 
-## 参考文档
-
-- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+<div class="flex">
+    <img width="30%" src="./images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211101203122.jpg">
+    <img width="30%" src="./images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211101203045.jpg">
+    <img width="30%" src="./images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211101203140.jpg">
+    <img width="30%" src="./images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211101203150.jpg">
+    <img width="30%" src="./images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211101203136.jpg">
+    <img width="30%" src="./images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211101203132.jpg">
+    <style>
+        .flex{
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+        }
+    </style>
+</div>
 
