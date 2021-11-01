@@ -11,12 +11,5 @@
     <img width="30%" src="./images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211101203150.jpg">
     <img width="30%" src="./images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211101203136.jpg">
     <img width="30%" src="./images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20211101203132.jpg">
-    <style>
-        .flex{
-            display: flex;
-            justify-content: space-between;
-            align-items: stretch;
-        }
-    </style>
 </div>
 
