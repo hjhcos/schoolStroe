@@ -1,18 +1,27 @@
-// pages/oraderList/oraderList.js
+import {getOrderList, getPendingOrder, getPendingOrderByCurrentUser, getReceivedOrderByCurrentUser} from '../../BBL.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    orderList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(options.statu == '0'){
+      wx.setNavigationBarTitle({title: '待发货'})
+      getPendingOrderByCurrentUser().then((res)=>{this.setData({'orderList': res.data})})
+    }else if(options.statu == '1'){
+      wx.setNavigationBarTitle({title: '待收货'})
+      getReceivedOrderByCurrentUser().then((res)=>{this.setData({'orderList': res.data})})
+    } else{
+      wx.setNavigationBarTitle({title: '全部订单'})
+      getOrderList().then((res)=>{this.setData({'orderList': res.data})})
+    }
   },
 
   /**

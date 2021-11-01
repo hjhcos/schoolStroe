@@ -19,8 +19,8 @@ Page({
       vip: false,
       worker: 0, // 0 超级身份 1 普通用户 2 填写商品 3 派送员
     },
-    // isLogin: false,
-    isLogin: true,
+    isLogin: false,
+    // isLogin: true,
     update: false,
     verify: '',
     sendVerifyInfo: {
